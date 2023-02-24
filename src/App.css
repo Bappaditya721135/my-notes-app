@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .App {
   text-align: center;
 }
@@ -34,5 +40,60 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+
+/* Navbar component  */
+.navbar-dev {
+  border: 1px solid black;
+  background: #001d3d;
+  color: white;
+  height: 50px;
+  font-size: 1.2rem;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.navbar-nav {
+  margin-inline: auto;
+  width: 450px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 20px;
+}
+
+.navbar-nav>li {
+  padding: 5px;
+  cursor: pointer;
+  transition: 0.5s;
+  display: inline;
+}
+
+.navbar-nav>li:hover {
+  background-color: #3a86ff;
+}
+
+.activeNavElementColor {
+  background-color: #3a86ff;
+}
+
+.main-container {
+  min-height: 100vh;
+  color: white;
+  background-color: blue;
+  padding-top: 50px;
+}
+
+
+/* when screen is 350px or less  */
+@media(max-width: 510px) {
+  .navbar-nav {
+    max-width: 350px;
+    font-size: 1rem;
   }
 }
