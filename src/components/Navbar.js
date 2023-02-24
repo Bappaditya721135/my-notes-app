@@ -29,7 +29,7 @@ export default function Navbar() {
         <li className={activeNav.deletedNotes ? "activeNavElementColor" : " "} name="deletedNotes" onClick={handleNavClick}>deleted notes</li>
       </ul>
 </nav>
-<div className="main-container">
+<div>
     {activeNav.notes && <Notes />}
     {activeNav.editedNotes && <EditedNotes />}
     {activeNav.deletedNotes && <DeletedNotes />}
