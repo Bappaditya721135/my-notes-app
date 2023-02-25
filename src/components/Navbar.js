@@ -10,7 +10,7 @@ export default function Navbar() {
         deletedNotes: false,
     })
 
-
+    // This function is to change the selected nav item 
     function handleNavClick(e) {
         setActiveNav(prevActiveNav=> {
             return {notes: false,
@@ -18,6 +18,16 @@ export default function Navbar() {
                 deletedNotes: false,
                 [e.target.attributes.name.value]: true,
             }
+        })
+    }
+
+    // this is where all the object data is stored 
+    const [data, setData] = useState([]);
+
+    function addNote(noteObj) {
+        setData(prevData=> {
+            prevData.unshift(noteObj);
+            return prevData;
         })
     }
     return(
@@ -29,8 +39,8 @@ export default function Navbar() {
         <li className={activeNav.deletedNotes ? "activeNavElementColor" : " "} name="deletedNotes" onClick={handleNavClick}>deleted notes</li>
       </ul>
 </nav>
-<div>
-    {activeNav.notes && <Notes />}
+<div className="main-container">
+    {activeNav.notes && <Notes data={data} addNote={addNote} />}
     {activeNav.editedNotes && <EditedNotes />}
     {activeNav.deletedNotes && <DeletedNotes />}
 </div>
