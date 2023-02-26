@@ -11,15 +11,14 @@ export default function AddNote(props) {
 
 
     // this state is to store the current object
-    const [note, setNote] = useState({
-        date: newDate,
-    })
+    const [note, setNote] = useState({})
 
     // this function is for when user type something in the textarea 
     function handleChange(e) {
         setNote(prevNote=> {
            return {
             ...prevNote,
+            date: newDate,
             body: e.target.value,
            }
         })
@@ -27,6 +26,7 @@ export default function AddNote(props) {
 
     // this function will send the data to the navbar and store it inside an array 
     const handleSaveBtnClick = ()=> {
+        console.log(note)
         props.handleAddNoteBtnClick();
         props.addNote(note);
     }

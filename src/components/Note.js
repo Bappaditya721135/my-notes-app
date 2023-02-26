@@ -6,7 +6,7 @@ export default function Note(props) {
         <div className="note">
             <p className="note-title">{title.slice(0, 100)}</p>
             <hr />
-            <p className="note-date">25/02/2023</p>
+            <p className="note-date">{props.date}</p>
         </div>
     );
 }
