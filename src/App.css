@@ -220,6 +220,87 @@ p {
 }
 
 
+/* showNote component  */
+.show-note {
+  max-width: 500px;
+  width: 100%;
+  height: 450px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  background-color: white;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 10px 1px #3a86ff;
+  border-radius: 5px;
+  z-index: 3;
+  padding: 10px;
+  
+}
+
+.show-note-date {
+  color: blue;
+  text-decoration: underline;
+  text-align: center;
+}
+
+.show-note-body {
+  height: 350px;
+  overflow-y: auto;
+  margin-top: 20px;
+}
+
+.dot-btn {
+  position: absolute;
+  left: 92%;
+  padding: 4px 10px 4px 11px;
+  border-radius: 50%;
+  background-color: rgba(128, 128, 128, 0.2);
+}
+
+.dot-btn:hover {
+  background-color: rgba(128, 128, 128, 0.5);
+}
+.dot-btn-option {
+  list-style-type: none;
+  padding: 5px 10px;
+  position: absolute;
+  right: 50%;
+  top: 55%;
+  white-space: nowrap;
+  background-color: #eaeaea;
+  font-weight: 400;
+  cursor: pointer;
+  border-radius: 10px 0 10px 10px;
+  box-shadow: 0 0 1px 1px rgb(164 147 147 / 30%)
+}
+
+.dot-btn-option>hr{
+  margin: 0;
+}
+
+.edit,
+.delete {
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  padding: 3px;
+}
+
+.edit>span,
+.delete>span {
+  padding-right: 3px;
+}
+
+.edit:hover {
+  color: blue;
+}
+
+.delete:hover {
+  color: red;
+}
+
+
+
+
 
 
 

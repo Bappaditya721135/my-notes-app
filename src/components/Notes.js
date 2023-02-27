@@ -16,7 +16,7 @@ export default function Notes(props) {
                 {props.data.length>0 ? props.data.map((note,index)=>{
                     return <Note
                      key={index}
-                     note={note}
+                     note={note.note}
                      date={note.date} />
                 }): <p className="default-text">You don't have any notes yet</p>}
 

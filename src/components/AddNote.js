@@ -19,14 +19,13 @@ export default function AddNote(props) {
            return {
             ...prevNote,
             date: newDate,
-            body: e.target.value,
+            note: e.target.value,
            }
         })
     }
 
     // this function will send the data to the navbar and store it inside an array 
     const handleSaveBtnClick = ()=> {
-        console.log(note)
         props.handleAddNoteBtnClick();
         props.addNote(note);
     }
