@@ -30,6 +30,15 @@ export default function Navbar() {
             return prevData;
         })
     }
+
+    // this function will run when user edit some object 
+    const editData = (editObj) => {
+        setData(prevData => {
+            const newArr = prevData.filter(obj => obj.id !== editObj.id)
+            return [editObj, ...newArr];
+
+        })
+    }
     return(
         <div>
         <nav className="navbar-dev">
@@ -40,8 +49,8 @@ export default function Navbar() {
       </ul>
 </nav>
 <div className="main-container">
-    {activeNav.notes && <Notes data={data} addNote={addNote} />}
-    {activeNav.editedNotes && <EditedNotes />}
+    {activeNav.notes && <Notes data={data} addNote={addNote} editData={editData} />}
+    {activeNav.editedNotes && <EditedNotes data={data} />}
     {activeNav.deletedNotes && <DeletedNotes />}
 </div>
 </div>

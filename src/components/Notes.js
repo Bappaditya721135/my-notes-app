@@ -16,8 +16,15 @@ export default function Notes(props) {
                 {props.data.length>0 ? props.data.map((note,index)=>{
                     return <Note
                      key={index}
+                     id={note.id}
                      note={note.note}
-                     date={note.date} />
+                     date={note.date}
+                     edited={note.edited}
+                     editDate={note.editDate}
+                     deleted={note.deleted}
+                     deleteDate={note.deleteDate}
+                     editData={props.editData} 
+                     showDotBtn={true} />
                 }): <p className="default-text">You don't have any notes yet</p>}
 
                 </div>

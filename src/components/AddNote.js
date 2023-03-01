@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { nanoid } from "nanoid";
 
 export default function AddNote(props) {
 
@@ -18,8 +19,13 @@ export default function AddNote(props) {
         setNote(prevNote=> {
            return {
             ...prevNote,
+            id: nanoid(),
             date: newDate,
             note: e.target.value,
+            edited: false,
+            editDate: "",
+            deleted: false,
+            deleteDate:"",
            }
         })
     }

@@ -3,6 +3,7 @@ import ShowNote from "./ShowNote";
 import BackgroundBlur from "./BackgroundBlur";
 
 export default function Note(props) {
+
     const [showNote, setShowNote] = useState(false);
 
     const handleNoteClick = () => {
@@ -15,11 +16,21 @@ export default function Note(props) {
             <p className="note-title">{title.slice(0, 100)}</p>
             <hr />
             <p className="note-date">{props.date}</p>
+            {props.edited && <span>(edited)</span>}
         </div>
         {showNote && <BackgroundBlur handleClick={handleNoteClick} />}
         {showNote && <ShowNote
+                        id={props.id}
                         note={props.note}
-                        date={props.date} />}
+                        date={props.date}
+                        edited={props.edited}
+                        editDate={props.editDate}
+                        deleted={props.deleted}
+                        deleteDate={props.deleteDate}
+                        editData={props.editData}
+                        showDotBtn={props.showDotBtn}
+                        handleNoteClick={handleNoteClick}
+                         />}
         </>
     );
 }
