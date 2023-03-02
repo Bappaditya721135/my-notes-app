@@ -1,10 +1,12 @@
 import React, {useState} from "react";
 import EditNote from "../components/EditNote";
+import DeleteConfirmBox from "./DeleteConfirmBox";
 
 export default function ShowNote(props) {
     // this state is for 3 dot btn
     const [dotBtn, setDotBtn] = useState(false);
     const [editNote, setEditNote] = useState(false);
+    const [deleteConfirmBox, setDeleteConfirmBox] = useState(false);
 
     // this function will run when user clicks on 3 dot button 
     const handleDotClick = () => {
@@ -17,9 +19,17 @@ export default function ShowNote(props) {
 
     }
 
+
     // this function will run when user clicks on edite option 
     const handleDeleteClick = () => {
-        console.log("delete clicked");
+        setDeleteConfirmBox(prevDeleteConfirmBox => !prevDeleteConfirmBox);
+    }
+
+    // this function will run when user clicks on delete in delete confirm Box 
+    // this function will send the object id to the nav bar component 
+    const sendDeleteObjId = () => {
+        props.deleteData(props.id);
+
     }
 
     const dateStr = props.deleted ? `deleted on ${props.deleteDate}`: props.edited ? `edite on ${props.editDate}`: `written on ${props.date}`
@@ -49,6 +59,12 @@ export default function ShowNote(props) {
                     handleEditClick={handleEditClick}
                     handleNoteClick={props.handleNoteClick}
                      />}
+
+
+        {deleteConfirmBox && <DeleteConfirmBox
+                             handleDeleteClick={handleDeleteClick}
+                             sendDeleteObjId={sendDeleteObjId}
+                             handleNoteClick={props.handleNoteClick} />}
         </>
     );
 }

@@ -28,6 +28,7 @@ export default function Note(props) {
                         deleted={props.deleted}
                         deleteDate={props.deleteDate}
                         editData={props.editData}
+                        deleteData={props.deleteData}
                         showDotBtn={props.showDotBtn}
                         handleNoteClick={handleNoteClick}
                          />}

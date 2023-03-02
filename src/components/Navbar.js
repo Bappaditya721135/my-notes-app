@@ -4,6 +4,14 @@ import EditedNotes from './EditedNotes';
 import Notes from './Notes';
 
 export default function Navbar() {
+    // to get the current date 
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1 > 9 ? date.getMonth() + 1 : `0${date.getMonth() + 1}`
+    const day = date.getDate() > 9 ? date.getDate() : `0${date.getDate()}`;
+    const newDate = `${day}/${month}/${year}`;
+
+
     const [activeNav, setActiveNav] = useState({
         notes: true,
         editedNotes: false,
@@ -39,6 +47,13 @@ export default function Navbar() {
 
         })
     }
+
+
+    // This function will run to delete objects from data array 
+    const deleteData = (objectId) => {
+        setData(prevData => prevData.map(obj => obj.id === objectId ? {...obj,deleted: true, deleteDate: newDate}: obj))
+    }
+
     return(
         <div>
         <nav className="navbar-dev">
@@ -49,9 +64,9 @@ export default function Navbar() {
       </ul>
 </nav>
 <div className="main-container">
-    {activeNav.notes && <Notes data={data} addNote={addNote} editData={editData} />}
+    {activeNav.notes && <Notes data={data} addNote={addNote} editData={editData} deleteData={deleteData} />}
     {activeNav.editedNotes && <EditedNotes data={data} />}
-    {activeNav.deletedNotes && <DeletedNotes />}
+    {activeNav.deletedNotes && <DeletedNotes data={data} />}
 </div>
 </div>
     );

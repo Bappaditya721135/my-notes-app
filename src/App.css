@@ -104,15 +104,7 @@ p {
 
 
 /* Notes component  */
-.notes-container {
-  /* position: absolute;
-  top: 0;
-  left: 0;
-  min-height: 100vh;
-  width: 100vw;
-  background-color: #272c51;
-  padding-top: 80px; */
-}
+
 
 .add-note-btn {
   position: fixed;
@@ -363,6 +355,62 @@ p {
 
 .edit-note-save-btn:hover {
   background-color: #3a86ff;
+}
+
+/* deletion confirm box component  */
+.deletion-confirm-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  padding: 20px;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+  box-shadow: 0 0 10px 1px blue;
+  max-width: 400px;
+  width: 100%;
+  height: 120px;
+  background-color: white;
+  color: black;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.deletion-confirm-box:hover {
+  box-shadow: 0 0 10px 3px blue;
+}
+
+.deletion-confirm-box>.buttons {
+  display: flex;
+  gap: 40px;
+}
+
+.yes-btn,
+.no-btn {
+  padding: 5px 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: none;
+}
+
+.yes-btn {
+  color: white;
+  background-color: rgba(255, 0, 0, 0.5);
+}
+
+.yes-btn:hover {
+  background-color: red;
+}
+
+.no-btn {
+  color: white;
+  background-color: rgba(0, 0, 255, 0.5);
+}
+
+.no-btn:hover {
+  background-color: blue;
 }
 
 

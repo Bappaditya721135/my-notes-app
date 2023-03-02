@@ -4,6 +4,7 @@ import BackgroundBlur from "./BackgroundBlur";
 import Note from "./Note";
 
 export default function Notes(props) {
+    const newArr = props.data.filter(obj => obj.deleted !== true);
 
     // this state is used toggle addNoteBox 
     const [addNoteBox, setAddNotebox] = useState(false)
@@ -13,7 +14,7 @@ export default function Notes(props) {
     return(
         <>
         <div className="notes-container">
-                {props.data.length>0 ? props.data.map((note,index)=>{
+                {props.data.length>0 ? newArr.map((note,index)=>{
                     return <Note
                      key={index}
                      id={note.id}
@@ -23,7 +24,8 @@ export default function Notes(props) {
                      editDate={note.editDate}
                      deleted={note.deleted}
                      deleteDate={note.deleteDate}
-                     editData={props.editData} 
+                     editData={props.editData}
+                     deleteData={props.deleteData} 
                      showDotBtn={true} />
                 }): <p className="default-text">You don't have any notes yet</p>}
 
