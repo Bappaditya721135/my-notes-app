@@ -31,6 +31,8 @@ export default function Note(props) {
                         deleteData={props.deleteData}
                         showDotBtn={props.showDotBtn}
                         handleNoteClick={handleNoteClick}
+                        recoverObject={props.recoverObject}
+                        deletePermanently={props.deletePermanently}
                          />}
         </>
     );

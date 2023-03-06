@@ -5,9 +5,14 @@ export default function DeleteConfirmBox(props) {
     const handleClick = (e) => {
         const value = e.target.name === 'delete' ? true : false;
         if(value) {
-            props.sendDeleteObjId();
-            props.handleDeleteClick();
-            props.handleNoteClick();
+            if(props.permanentDelete) {
+                props.deletePermanently(props.id)
+            }
+            else {
+                props.sendDeleteObjId();
+                props.handleDeleteClick();
+                props.handleNoteClick();
+            }
         } else {
             props.handleDeleteClick();
         }

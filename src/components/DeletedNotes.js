@@ -3,7 +3,7 @@ import Note from "./Note";
 
 export default function DeletedNotes(props) {
     const deletedArr = props.data.filter(obj => obj.deleted === true);
-    console.log(deletedArr);
+
     return(
         <div className="Deleted-notes-container">
             {deletedArr.length>0 ? deletedArr.map((note,index) => {
@@ -17,7 +17,9 @@ export default function DeletedNotes(props) {
                     deleted={note.deleted}
                     deleteDate={note.deleteDate}
                     editData={props.editData}
-                    showDotBtn={false} />
+                    showDotBtn={false}
+                    recoverObject={props.recoverObject}
+                    deletePermanently={props.deletePermanently} />
         }):
             <p className="default-text">You don't have any Deleted notes</p>}
         </div>

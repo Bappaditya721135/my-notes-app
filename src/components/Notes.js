@@ -14,7 +14,7 @@ export default function Notes(props) {
     return(
         <>
         <div className="notes-container">
-                {props.data.length>0 ? newArr.map((note,index)=>{
+                {newArr.length>0 ? newArr.map((note,index)=>{
                     return <Note
                      key={index}
                      id={note.id}

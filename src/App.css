@@ -313,6 +313,38 @@ p {
 }
 
 
+.recover-del-btn {
+  display: flex;
+  justify-content: space-around;
+}
+
+.recover-btn {
+  padding: 5px 10px;
+  border: none;
+  color: white;
+  background-color: rgba(58, 134, 255, 0.7);
+  transition: 0.3s;
+  border-radius: 5px;
+}
+
+.recover-btn:hover {
+  background-color: #3a86ff;
+}
+
+.permanent-del-btn {
+  padding: 5px 10px;
+  border: none;
+  color: white;
+  background-color: rgba(255, 0, 0, 0.5);
+  transition: 0.3s;
+  border-radius: 5px;
+}
+
+.permanent-del-btn:hover {
+  background-color: red;
+}
+
+
 /* Edit-note component  */
 .edit-note-container {
   max-width: 500px;

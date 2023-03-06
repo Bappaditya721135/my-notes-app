@@ -7,6 +7,7 @@ export default function ShowNote(props) {
     const [dotBtn, setDotBtn] = useState(false);
     const [editNote, setEditNote] = useState(false);
     const [deleteConfirmBox, setDeleteConfirmBox] = useState(false);
+    const [permanentDelete, setPermanentDelete] = useState(false);
 
     // this function will run when user clicks on 3 dot button 
     const handleDotClick = () => {
@@ -32,6 +33,18 @@ export default function ShowNote(props) {
 
     }
 
+    // this function is for when user want's to recover deleted notes 
+    const handleRecover = () => {
+        props.recoverObject(props.id);
+    }
+
+    // this function is for when user want's to permanently delete notes 
+    const handlePermanentDelete = () => {
+        setPermanentDelete(prevPermanentDelete => !prevPermanentDelete);
+        setDeleteConfirmBox(prevDeleteConfirmBox => !prevDeleteConfirmBox)
+        // props.deletePermanently(props.id);
+    }
+
     const dateStr = props.deleted ? `deleted on ${props.deleteDate}`: props.edited ? `edite on ${props.editDate}`: `written on ${props.date}`
     return(
         <>
@@ -46,6 +59,10 @@ export default function ShowNote(props) {
           </i>}
             <p className="show-note-date">{dateStr}</p>
             <p className="show-note-body">{props.note}</p>
+            {props.deleted && <div className="recover-del-btn">
+                <button className="recover-btn" onClick={handleRecover}>recover</button>
+                <button className="permanent-del-btn" onClick={handlePermanentDelete}>permanently delete</button>
+                </div>}
         </div>
         {editNote && <EditNote 
                     id={props.id}
@@ -64,7 +81,10 @@ export default function ShowNote(props) {
         {deleteConfirmBox && <DeleteConfirmBox
                              handleDeleteClick={handleDeleteClick}
                              sendDeleteObjId={sendDeleteObjId}
-                             handleNoteClick={props.handleNoteClick} />}
+                             handleNoteClick={props.handleNoteClick}
+                             permanentDelete={permanentDelete}
+                             id={props.id}
+                             deletePermanently={props.deletePermanently} />}
         </>
     );
 }

@@ -54,6 +54,27 @@ export default function Navbar() {
         setData(prevData => prevData.map(obj => obj.id === objectId ? {...obj,deleted: true, deleteDate: newDate}: obj))
     }
 
+
+    // Thsi function is to recover deleted objects 
+    const recoverObject = (id) => {
+        const [delObj] = data.filter(obj => obj.id === id);
+        setData(prevData => {
+            const newArr = prevData.filter(obj => obj.id !== id);
+            newArr.unshift({...delObj,deleted: false, deleteDate: ""})
+            return newArr;
+        })
+
+    }
+
+    // this function is to delete note permanently 
+    const deletePermanently = (id) => {
+        setData(prevData => {
+            const newArr = prevData.filter(obj => obj.id !== id);
+            return newArr;
+        })
+    }
+    
+
     return(
         <div>
         <nav className="navbar-dev">
@@ -66,7 +87,7 @@ export default function Navbar() {
 <div className="main-container">
     {activeNav.notes && <Notes data={data} addNote={addNote} editData={editData} deleteData={deleteData} />}
     {activeNav.editedNotes && <EditedNotes data={data} />}
-    {activeNav.deletedNotes && <DeletedNotes data={data} />}
+    {activeNav.deletedNotes && <DeletedNotes data={data} recoverObject={recoverObject} deletePermanently={deletePermanently} />}
 </div>
 </div>
     );
