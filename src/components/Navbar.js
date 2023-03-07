@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import DeletedNotes from './DeletedNotes';
 import EditedNotes from './EditedNotes';
 import Notes from './Notes';
@@ -29,15 +29,35 @@ export default function Navbar() {
         })
     }
 
+    // this is the initialState for the data state 
+    const initialState = () => {
+        const arr = localStorage.getItem("data");
+        if(arr.length === 0) {
+            return [];
+        }
+        else {
+            return JSON.parse(arr);
+        }
+    };
+
     // this is where all the object data is stored 
-    const [data, setData] = useState([]);
+    const [data, setData] = useState(initialState);
+
+
+     // this function is to store data in local storage when data state changes
+    useEffect(() => {
+        localStorage.setItem("data", JSON.stringify(data));
+    }, [data])
 
     function addNote(noteObj) {
         setData(prevData=> {
             prevData.unshift(noteObj);
-            return prevData;
+            return [...prevData];
         })
     }
+   
+
+    
 
     // this function will run when user edit some object 
     const editData = (editObj) => {
@@ -73,7 +93,7 @@ export default function Navbar() {
             return newArr;
         })
     }
-    
+    console.log(data);
 
     return(
         <div>

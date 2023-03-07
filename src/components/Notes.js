@@ -4,6 +4,7 @@ import BackgroundBlur from "./BackgroundBlur";
 import Note from "./Note";
 
 export default function Notes(props) {
+    console.log(props.data);
     const newArr = props.data.filter(obj => obj.deleted !== true);
 
     // this state is used toggle addNoteBox 
